@@ -61,7 +61,53 @@ Replace `<repo-name>` with the desired GitHub repository name.
 
 If you want a private repository, change `--public` to `--private`.
 
-Verify the remote after creation:
+## Create and switch to a new branch
+
+From the project root:
+
+```powershell
+# create and checkout a new branch
+git checkout -b <branch-name>
+```
+
+Replace `<branch-name>` with a descriptive branch name, for example `feature/update-readme`.
+
+## Update, commit, and push changes
+
+After editing files such as `README.md`:
+
+```powershell
+# stage a single changed file
+git add README.md
+
+# commit with a useful message
+git commit -m "Update README with GitHub setup and branch workflow"
+
+# push the branch to GitHub
+git push -u origin <branch-name>
+```
+
+If you are updating multiple files, you can stage them all at once instead of adding one by one:
+
+```powershell
+# stage every changed or new file in the repo
+git add .
+
+# stage all changes, including deletions
+git add -A
+
+# stage only modified or deleted tracked files
+git add -u
+```
+
+Then commit and push as usual:
+
+```powershell
+git commit -m "Update README and other changes"
+git push -u origin <branch-name>
+```
+
+Then confirm the remote branch is set up:
 
 ```powershell
 git remote -v
