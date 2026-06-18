@@ -4,16 +4,16 @@ A simple Spring Boot backend application with a health check and a ping endpoint
 
 ## Run the application
 
-From the project root (`c:\work\testing`):
+From the project root (`c:\work\testing`), use your installed Maven CLI:
 
 ```powershell
-.\mvnw.cmd spring-boot:run
+mvn spring-boot:run
 ```
 
 Or build and run the jar:
 
 ```powershell
-.\mvnw.cmd clean package
+mvn clean package
 java -jar target\testing-0.0.1-SNAPSHOT.jar
 ```
 
