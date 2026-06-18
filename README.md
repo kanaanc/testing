@@ -61,7 +61,7 @@ Replace `<repo-name>` with the desired GitHub repository name.
 
 If you want a private repository, change `--public` to `--private`.
 
-## Create and switch to a new branch
+## Create and work on a new branch
 
 From the project root:
 
@@ -72,13 +72,16 @@ git checkout -b <branch-name>
 
 Replace `<branch-name>` with a descriptive branch name, for example `feature/update-readme`.
 
-## Update, commit, and push changes
+## Stage, commit, and push changes
 
-After editing files such as `README.md`:
+After editing files:
 
 ```powershell
-# stage a single changed file
+# stage one file
 git add README.md
+
+# or stage all changed files
+git add .
 
 # commit with a useful message
 git commit -m "Update README with GitHub setup and branch workflow"
@@ -87,28 +90,41 @@ git commit -m "Update README with GitHub setup and branch workflow"
 git push -u origin <branch-name>
 ```
 
-If you are updating multiple files, you can stage them all at once instead of adding one by one:
+If you want to stage all changes including deletions, use:
 
 ```powershell
-# stage every changed or new file in the repo
-git add .
-
-# stage all changes, including deletions
 git add -A
-
-# stage only modified or deleted tracked files
-git add -u
 ```
 
-Then commit and push as usual:
-
-```powershell
-git commit -m "Update README and other changes"
-git push -u origin <branch-name>
-```
-
-Then confirm the remote branch is set up:
+To confirm the remote branch is set up:
 
 ```powershell
 git remote -v
+```
+
+## Merge your branch into main
+
+When your branch is ready and pushed, switch to the main branch and merge:
+
+```powershell
+# switch to main (or master if your repo uses master)
+git checkout main
+
+# update main from GitHub
+git pull origin main
+
+# merge your branch into main
+git merge <branch-name>
+
+# push the merged main branch
+git push origin main
+```
+
+If your repository uses `master` instead of `main`, replace `main` with `master`.
+
+### Optional: delete the branch after merge
+
+```powershell
+git branch -d <branch-name>
+git push origin --delete <branch-name>
 ```
